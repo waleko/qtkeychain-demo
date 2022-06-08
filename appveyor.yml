@@ -1,0 +1,12 @@
+image: Visual Studio 2019
+
+install:
+  - git submodule update --init --recursive
+
+build_script:
+  - set "PATH=C:\\Qt\\Tools\\mingw810_32\\bin;C:\\Qt\\5.15.2\\mingw81_32\\bin;%PATH%"
+  - cmake -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND" -DQT5_DIR="C:\\Qt\\5.15.2" .
+  - cmake --build . --target qtkeychain_test
+
+test_script:
+  - ps: ./qtkeychain_test
